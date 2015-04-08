@@ -6,9 +6,9 @@ app = express()
 MongoStore = require('connect-mongo') express
 
 config = require './config/config'
+database = require './lib/database'
 middlewares = require './routes/middlewares'
 routes = require './routes'
-database = require './lib/database'
 
 database.connection.once 'open', ->
 	app.configure ->
@@ -20,6 +20,7 @@ database.connection.once 'open', ->
 		app.use express.logger()
 		app.use express.bodyParser()
 		app.use express.methodOverride()
+		app.use require('express-validator')()
 		app.use express.cookieParser()
 		app.use express.session {
 		    secret: config.secret
@@ -27,6 +28,7 @@ database.connection.once 'open', ->
 		        mongoose_connection: database.connections[0]
 		    }
 		}
+		app.use require('connect-assets')()
 		app.use express.static(path.join __dirname, 'public')
 		app.use app.router
 		null

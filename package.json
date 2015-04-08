@@ -13,7 +13,11 @@
     "coffee-script": "~1.6.3",
     "express-partials": "~0.1.1",
     "mongoose": "~3.6.20",
-    "connect-mongo": "~0.3.3"
+    "connect-mongo": "~0.3.3",
+    "connect-assets": "~3.0.0-alpha1",
+    "stylus": "~0.39.3",
+    "mongoose-troop": "0.0.8",
+    "express-validator": "~0.8.0"
   },
   "repository": {
     "type": "git",

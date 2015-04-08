@@ -12,4 +12,7 @@ HomeController = require '../controllers/HomeController'
 # Home
 app.get '/', HomeController.getIndex
 
+# Load API routes
+app.use '/api/v1', require './api/v1'
+
 module.exports = app

@@ -1,10 +1,37 @@
-<div>
-    <h1>
-        Welcome to <strong>helvert</strong>!
-    </h1>
+<script type="text/x-handlebars" id="about">
+    <div class="starter-template">
+        <h1>scrux-ember <small>A node.js to-do list in <a href="https://github.com/KamalN7/helvert">helvert</a> and <a href="http://emberjs.com/">ember.js</a>.</small></h1>
+    </div>
+</script>
 
-    <p>
-        Docs: <a href="https://github.com/KamalN7/helvert/blob/master/README.md">master/README.md</a><br/>
-        GitHub repository: <a href="https://github.com/KamalN7/helvert">KamalN7/helvert</a>
-    </p>
-</div>
+<script type="text/x-handlebars" id="todos">
+    <div class="row">
+        <div class="col-md-offset-2 col-md-8 col-sm-12 col-sm-offset-0">
+            <h3 class="title-divider">
+                <span>Todos</span>
+            </h3>
+            <hr/>
+            <form>
+            <div>
+                {{input id="newTodo" type="text" value=newContents action="createTodo" placeholder="Buy milk" class="form-control"}}
+            </div>
+            <br/>
+            <table id="todos" class="table table-bordered table-striped">
+                <tbody>
+                    {{#each controller itemController="todo"}}
+                        <tr>
+                            <td>
+                                <span {{bind-attr class=":col-md-10 done:todo-done"}}>{{contents}}</span>
+                                <span class="col-md-2 pull-right"><a href="#" class="glyphicon {{#if done}}glyphicon-repeat btn-info{{else}}glyphicon-ok btn-success{{/if}} btn"></a> <a href="#" class="glyphicon glyphicon-trash btn btn-danger"> </a>
+                            </td>
+                        </tr>
+                    {{else}}
+                        <p>
+                            No todos found.
+                        </p>
+                    {{/each}}
+                </tbody>
+            </table>
+        </div>
+    </div>
+</script>
